@@ -2,7 +2,7 @@
 import React from 'react';
 import { createWorker } from 'tesseract.js';
 import { useState, useEffect } from 'react';
-import { Flex, Text,TextArea } from '@chakra-ui/react';
+import { Flex, Text,Textarea } from '@chakra-ui/react';
 
 const initWorker = async setWorker => {
   let tempWorker = createWorker({
@@ -45,7 +45,8 @@ function Output({ imageInput, canvasInput, count }) {
   return(
     <>
       <Textarea 
-        width="90%" 
+        maxW="600px"
+        width="100%" 
         height="300px" 
         mb="20px" 
         value={output}

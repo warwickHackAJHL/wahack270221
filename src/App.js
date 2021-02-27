@@ -26,7 +26,7 @@ function App() {
       >
         {image ? (
           <Flex>
-            <Image src={image} />
+            <img src={image} alt="Uploaded image" />
           </Flex>
         ) : (
           <Canvas setCanvas={setCanvas} count={count} setCount={setCount} />

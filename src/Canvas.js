@@ -3,7 +3,7 @@ import { Flex } from '@chakra-ui/react'
 import React from 'react'
 import CanvasDraw from "react-canvas-draw"
 
-const Canvas = () => {
+const Canvas = ({imageInput,canvasInput}) => {
   // canvas with drawing is canvas with z-index 11
   return (
     <Flex width="800px" height="600px" border="solid 1px black">

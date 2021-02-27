@@ -1,14 +1,14 @@
 // file to contain the stuff to uplaod the image
-import React from 'react'
+import React,{useState} from 'react'
 
-function Imageupload() {
+function Imageupload({setImage}) {
+  // const [image,setImage] = useState()
+  const handleChange = (event) =>{
+    setImage(URL.createObjectURL(event.target.files[0]))
+  }
   return (
     <div>
-      <form>
-        <label>Upload Image:</label>
-        <input type="file" id="img" name="img" accept="image/*"/>
-        <button type="submit">Submit</button>
-      </form>
+      <input type="file" id="img" name="img" accept="image/*" onChange={handleChange}/>
     </div>
   )
 }

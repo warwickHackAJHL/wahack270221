@@ -51,7 +51,7 @@ function Output({ imageInput, canvasInput, count }) {
         width="100%"
         height="300px"
         mb="20px"
-        value={loading ? 'Scanning...' : output}
+        value={output}
         onChange={inputChange}
       />
     </>

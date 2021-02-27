@@ -37,7 +37,7 @@ const Canvas = ({ setCanvas, count, setCount }) => {
         position="relative"
         bottom="-15px"
         left="40px"
-        colorScheme="red"
+        colorScheme="yellow"
         onClick={() => {
           if (canvasRef?.current) {
             canvasRef.current.undo();

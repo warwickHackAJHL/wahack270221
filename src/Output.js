@@ -3,13 +3,16 @@ import React from 'react';
 import { createWorker } from 'tesseract.js';
 import { useState, useEffect } from 'react';
 import { Flex, Text,Textarea } from '@chakra-ui/react';
+// const { createWorker } = require('tesseract.js');
 
 const initWorker = async setWorker => {
   let tempWorker = createWorker({
+    langPath: '../tessdata/',
+    gzip: false,
     logger: m => console.log(m),
   });
   await tempWorker.load();
-  await tempWorker.loadLanguage();
+  await tempWorker.loadLanguage('eng+chi_sum+LCDDot_FT_500');
   await tempWorker.initialize('eng');
   setWorker(tempWorker);
 };
@@ -35,8 +38,9 @@ function Output({ imageInput, canvasInput, count }) {
   }, [worker, imageInput, canvasInput, count]);
 
   if (loading) {
-    return <div>Scanning...</div>;
+    // return <div>Scanning...</div>;
   }
+
   const inputChange = (e) => {
     const inputValue = e.target.value;
     setOutput(inputValue);

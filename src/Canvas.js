@@ -9,14 +9,6 @@ const Canvas = ({ setCanvas }) => {
     setCanvas(canvas.canvas.drawing);
   };
   return (
-    <Flex
-      width="810px"
-      height="610px"
-      border="solid 2px grey"
-      margin="5px"
-      justifyContent="center"
-      alignItems="center"
-    >
       <CanvasDraw
         canvasWidth="800px"
         canvasHeight="600px"
@@ -24,7 +16,7 @@ const Canvas = ({ setCanvas }) => {
         hideGrid={true}
         brushRadius={4}
       />
-    </Flex>
+    // </Flex>
   );
 };
 

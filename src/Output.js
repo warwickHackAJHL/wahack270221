@@ -1,14 +1,12 @@
 // file to contain the output text
 import React from 'react';
 import { createWorker } from 'tesseract.js';
-import { useState } from 'react';
-import { Flex,Text } from '@chakra-ui/react';
-
-
+import { useState, useEffect } from 'react';
+import { Flex,Textarea } from '@chakra-ui/react';
 
 function Output({imageInput,canvasInput}) {
   const worker = createWorker({
-    logger: m => console.log(m),
+    // logger: m => console.log(m),
   });
   
   const scanInput = async () => {
@@ -16,36 +14,45 @@ function Output({imageInput,canvasInput}) {
     await worker.loadLanguage('eng');
     await worker.initialize('eng'); 
     const { data: {text} } = await worker.recognize(imageInput ?? canvasInput, 'eng');
+    console.log(text);
     setOutput(text);
-    setLoading(false);
-    await worker.terminate(); 
   }
   
   // switch it up depending on canvas/image
   const [output, setOutput] = useState();
-  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    scanInput();
+  },[imageInput, canvasInput]);
+  // const [loading, setLoading] = useState(true);
 
-  if (imageInput == undefined && canvasInput == undefined) {
-    return <div></div>;
+  // useEffect(() => {
+  //   setLoading(true);
+  //   scanInput();
+  // },[imageInput, canvasInput]);
+
+  // if (imageInput == undefined && canvasInput == undefined) {
+  //   return <div></div>;
+  // }
+
+  // scanInput(); // 
+  // if (loading) {
+  //   return <div>Loading...</div>
+  // };
+  const inputChange = (e) => {
+    const inputValue = e.target.value;
+    setOutput(inputValue);
   }
 
-  scanInput(); // 
-  if (loading) {
-    return <div>Scanning...</div>;
-  }  
-  
-  
-  // .then( data : {text} ) => { // Look at comment below for data properties
-  //   console.log(data)
-  //   setOutput(data.text);
-  // });
-
   return(
-    <Flex>
-      <Text>
-        {output}
-      </Text>
-    </Flex>
+    <>
+      <Textarea 
+        width="90%" 
+        height="300px" 
+        mb="20px" 
+        value={output}
+        onChange={inputChange}
+      />
+    </>
   )
 }
 

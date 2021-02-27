@@ -2,18 +2,18 @@
 import React from 'react';
 import { createWorker } from 'tesseract.js';
 import { useState, useEffect } from 'react';
-import { Flex, Text,Textarea } from '@chakra-ui/react';
-// const { createWorker } = require('tesseract.js');
+import { Textarea } from '@chakra-ui/react';
 
 const initWorker = async setWorker => {
   let tempWorker = createWorker({
-    langPath: '../tessdata/',
+    langPath: '../public/tessdata',
     gzip: false,
     logger: m => console.log(m),
+    errorHandler: err => console.error(err)
   });
   await tempWorker.load();
-  await tempWorker.loadLanguage('eng+chi_sum+LCDDot_FT_500');
-  await tempWorker.initialize('eng');
+  await tempWorker.loadLanguage('eng+chi_tra+LCDDot_FT_500+ita');
+  await tempWorker.initialize('eng+chi_tra+LCDDot_FT_500+ita');
   setWorker(tempWorker);
 };
 

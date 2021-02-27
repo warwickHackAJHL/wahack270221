@@ -1,6 +1,6 @@
 // file to contain the stuff to uplaod the image
 import React, { useState } from 'react';
-import { HStack,Text, Flex, Input, Box, Button } from '@chakra-ui/react';
+import { HStack,Text, Flex, Button } from '@chakra-ui/react';
 
 import { AttachmentIcon, DeleteIcon } from '@chakra-ui/icons';
 function Imageupload({ image, setImage }) {

@@ -8,9 +8,9 @@ function App() {
   const [image, setImage] = useState();
   const [canvas, setCanvas] = useState();
   return (
-    <Flex direction="column" justifyContent="flex-start">
+    <Flex direction="column" justifyContent="flex-start" w="100%" minH="100vh" alignItems="center">
       <Canvas setCanvas = {setCanvas}/>
-      <ImageUpload setImage={setImage} />
+      <ImageUpload image = {image} setImage={setImage} />
       <Output imageInput={image} canvasInput={canvas} />
     </Flex>
   );

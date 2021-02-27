@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to wahack270221 👋</h1>
+<h1 align="center">Welcome to WarwickHack Image recognition👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
 </p>
@@ -7,11 +7,9 @@
 
 ### 🏠 [Homepage](https://warwickhackajhl.github.io/wahack270221/)
 
-## Install
+## Video
 
-```sh
-yarn install
-```
+Video:[Yotube-Link](https://youtube.com)
 
 ## Usage
 
@@ -25,14 +23,18 @@ yarn install
 👤 **Hugo**
 
 - Github: [@Hugo-WB](https://github.com/Hugo-WB)
-  👤 **Justin**
+
+<br/>
+
+👤 **Justin**
 - Github: [@Justanhy](https://github.com/Justanhy)
-  👤 **Hugo Justin Alek**
+
+👤 **Alek**
+- Github: [@aleksanderdukaczewski](https://github.com/aleksanderdukaczewski)
+
 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
 
 ---
-
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_

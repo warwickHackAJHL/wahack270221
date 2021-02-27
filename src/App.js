@@ -5,6 +5,7 @@ import ImageUpload from './ImageUpload.js';
 import Output from './Output.js';
 
 function App() {
+  const [count, setCount] = useState(0);
   const [image, setImage] = useState();
   const [canvas, setCanvas] = useState();
   return (
@@ -15,24 +16,24 @@ function App() {
       minH="100vh"
       alignItems="center"
     >
-    <Flex
-      width="810px"
-      height="610px"
-      border="solid 2px grey"
-      margin="5px"
-      justifyContent="center"
-      alignItems="center"
-    >
-      {image ? (
-        <Flex>
-          <Image src={image} />
-        </Flex>
-      ) : (
-        <Canvas setCanvas={setCanvas} />
-      )}
+      <Flex
+        width="810px"
+        height="610px"
+        border="solid 2px grey"
+        margin="5px"
+        justifyContent="center"
+        alignItems="center"
+      >
+        {image ? (
+          <Flex>
+            <Image src={image} />
+          </Flex>
+        ) : (
+          <Canvas setCanvas={setCanvas} count={count} setCount={setCount} />
+        )}
       </Flex>
       <ImageUpload image={image} setImage={setImage} />
-      <Output imageInput={image} canvasInput={canvas} />
+      <Output imageInput={image} canvasInput={canvas} count={count} />
     </Flex>
   );
 }

@@ -4,7 +4,23 @@ import { createWorker } from 'tesseract.js';
 import { useState } from 'react';
 import { Flex,Text } from '@chakra-ui/react';
 
+
+
 function Output({imageInput,canvasInput}) {
+  const worker = createWorker({
+    logger: m => console.log(m),
+  });
+  
+  const scanInput = async () => {
+    await worker.load();
+    await worker.loadLanguage('eng');
+    await worker.initialize('eng'); 
+    const { data: {text} } = await worker.recognize(imageInput ?? canvasInput, 'eng');
+    setOutput(text);
+    setLoading(false);
+    await worker.terminate(); 
+  }
+  
   // switch it up depending on canvas/image
   const [output, setOutput] = useState();
   const [loading, setLoading] = useState(true);
@@ -16,22 +32,7 @@ function Output({imageInput,canvasInput}) {
   scanInput(); // 
   if (loading) {
     return <div>Scanning...</div>;
-  }
-  
-
-  const worker = createWorker({
-    logger: m => console.log(m),
-  });
-
-  const scanInput = async () => {
-    await worker.load();
-    await worker.loadLanguage('eng');
-    await worker.initialize('eng'); 
-    const { data: {text} } = await worker.recognize(imageInput ?? canvasInput, 'eng');
-    setOutput(text);
-    setLoading(false);
-    await worker.terminate(); 
-  }
+  }  
   
   
   // .then( data : {text} ) => { // Look at comment below for data properties
@@ -47,6 +48,8 @@ function Output({imageInput,canvasInput}) {
     </Flex>
   )
 }
+
+
 
 // {
 //   text: "Mild Splendour of the various-vested Nig ..."

@@ -4,7 +4,7 @@ import Tesseract from 'tesseract.js';
 import {useState} from 'react';
 import { Flex,Text } from '@chakra-ui/react';
 
-function Output() {
+function Output({imageInput,canvasInput}) {
   // switch it up depending on canvas/image
   const [output, setOutput] = useState('fake output');
   Tesseract.recognize(

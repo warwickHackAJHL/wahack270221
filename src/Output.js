@@ -2,7 +2,7 @@
 import React from 'react';
 import { createWorker } from 'tesseract.js';
 import { useState, useEffect } from 'react';
-import { Flex, Text,TextArea } from '@chakra-ui/react';
+import { Flex, Text, TextArea } from '@chakra-ui/react';
 
 const initWorker = async setWorker => {
   let tempWorker = createWorker({

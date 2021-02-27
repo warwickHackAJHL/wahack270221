@@ -6,27 +6,28 @@ import { Textarea } from '@chakra-ui/react';
 
 const initWorker = async setWorker => {
   let tempWorker = createWorker({
-    langPath: '../public/tessdata',
-    gzip: false,
+    // langPath: '',
+    // gzip: false,
     logger: m => console.log(m),
-    errorHandler: err => console.error(err)
+    errorHandler: err => console.error(err),
   });
   await tempWorker.load();
-  await tempWorker.loadLanguage('eng+chi_tra+LCDDot_FT_500+ita');
-  await tempWorker.initialize('eng+chi_tra+LCDDot_FT_500+ita');
+  await tempWorker.loadLanguage();
+  await tempWorker.initialize('eng');
   setWorker(tempWorker);
 };
 
 function Output({ imageInput, canvasInput, count }) {
   const [worker, setWorker] = useState();
-  const [output, setOutput] = useState();
-  const [loading, setLoading] = useState(true);
+  const [output, setOutput] = useState('');
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     initWorker(setWorker);
   }, []);
 
   useEffect(() => {
     if (worker) {
+      setLoading(true);
       worker.recognize(imageInput ?? canvasInput).then(result => {
         const text = result?.data?.text;
         if (text) {
@@ -37,26 +38,23 @@ function Output({ imageInput, canvasInput, count }) {
     }
   }, [worker, imageInput, canvasInput, count]);
 
-  if (loading) {
-    // return <div>Scanning...</div>;
-  }
 
-  const inputChange = (e) => {
+  const inputChange = e => {
     const inputValue = e.target.value;
     setOutput(inputValue);
-  }
+  };
 
-  return(
+  return (
     <>
-      <Textarea 
+      <Textarea
         maxW="600px"
-        width="100%" 
-        height="300px" 
-        mb="20px" 
-        value={output}
+        width="100%"
+        height="300px"
+        mb="20px"
+        value={loading ? 'Scanning...' : output}
         onChange={inputChange}
       />
     </>
-  )
+  );
 }
 export default Output;

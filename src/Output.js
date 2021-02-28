@@ -6,8 +6,6 @@ import { Textarea } from '@chakra-ui/react';
 
 const initWorker = async setWorker => {
   let tempWorker = createWorker({
-    // langPath: '',
-    // gzip: false,
     logger: m => console.log(m),
     errorHandler: err => console.error(err),
   });
@@ -20,19 +18,16 @@ const initWorker = async setWorker => {
 function Output({ imageInput, canvasInput, count }) {
   const [worker, setWorker] = useState();
   const [output, setOutput] = useState('');
-  const [loading, setLoading] = useState(false);
   useEffect(() => {
     initWorker(setWorker);
   }, []);
 
   useEffect(() => {
     if (worker) {
-      setLoading(true);
       worker.recognize(imageInput ?? canvasInput).then(result => {
         const text = result?.data?.text;
         if (text) {
           setOutput(text);
-          setLoading(false);
         }
       });
     }

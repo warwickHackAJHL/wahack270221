@@ -9,7 +9,7 @@
 
 ## Video
 
-Video:[Youtube-Link](https://youtube.com)
+Video:[Youtube-Link](https://www.youtube.com/watch?v=0DiAGhN6-n4&feature=youtu.be&ab_channel=HugoWong-Berard)
 
 ## Installing
 
@@ -24,8 +24,10 @@ In this project we make use of [Tesseract.js](https://tesseract.projectnaptha.co
 
 It enables us to read text from images with varying accuracy depending on the type of text (typed fonts/canvas/handwriting etc.) it is.
 
-For the canvas we used [react-canvas-draw](https://github.com/embiem/react-canvas-draw)
+For the canvas we used [react-canvas-draw](https://github.com/embiem/react-canvas-draw).
 
+### Testing
+To use the same test image we used in our demo video (see "Video" section above), upload the *"test.png"* file to the webpage and compare the results to our video!
 
 ## Authors
 
